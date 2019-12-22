@@ -1,0 +1,60 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+INPUT      INTERVAL          9    
+TARGET     BINARY            1    
+TIMEID     INTERVAL          1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The CONTENTS Procedure
+
+Data Set Name        EMWS1.FIMPORT3_DATA           Observations          35
+Member Type          DATA                          Variables             11
+Engine               V9                            Indexes               0 
+Created              12/19/2019 13:32:18           Observation Length    88
+Last Modified        12/19/2019 13:32:18           Deleted Observations  0 
+Protection                                         Compressed            NO
+Data Set Type                                      Sorted                NO
+Label                                                                      
+Data Representation  WINDOWS_64                                            
+Encoding             wlatin1  Western (Windows)                            
+
+
+                                       Engine/Host Dependent Information
+
+Data Set Page Size          65536                                                                               
+Number of Data Set Pages    1                                                                                   
+First Data Page             1                                                                                   
+Max Obs per Page            743                                                                                 
+Obs in First Data Page      35                                                                                  
+Number of Data Set Repairs  0                                                                                   
+ExtendObsCounter            YES                                                                                 
+Filename                    C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\fimport3_data.sas7bdat
+Release Created             9.0401M3                                                                            
+Host Created                X64_8PRO                                                                            
+
+
+                Alphabetic List of Variables and Attributes
+ 
+ #    Variable                            Type    Len    Format    Label
+
+ 7    Change__                            Num       8                     
+ 9    DailyHighestPrice_StockOpenPrice    Num       8                     
+10    DailyLowestPrice_StockOpenPrice     Num       8                     
+11    DailyStockOpen_PrevClosePrice       Num       8                     
+ 8    DailyStockOpen_PrevDayOpen          Num       8                     
+ 1    Date                                Num       8    DATE9.    Date   
+ 4    High                                Num       8    BEST.     High   
+ 5    Low                                 Num       8    BEST.     Low    
+ 3    Open                                Num       8    BEST.     Open   
+ 6    Outcome                             Num       8    BEST.     Outcome
+ 2    Price                               Num       8    BEST.     Price  

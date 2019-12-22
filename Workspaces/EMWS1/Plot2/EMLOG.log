@@ -1,0 +1,553 @@
+*------------------------------------------------------------*
+User:                Forge 15 i7
+Date:                December 18, 2019
+Time:                23:13:37
+Site:                12600285
+Platform:            X64_8PRO
+Maintenance Release: 9.04.01M3P062415
+EM Version:          14.1
+* 
+*------------------------------------------------------------*
+* Training Log
+Date:                December 18, 2019
+Time:                23:13:34
+*------------------------------------------------------------*
+10866  proc freq data=EMWS1.Plot2_VariableSet noprint;
+10867  table ROLE*LEVEL/out=WORK.Plot2META;
+10868  run;
+ 
+NOTE: There were 10 observations read from the data set EMWS1.PLOT2_VARIABLESET.
+NOTE: The data set WORK.PLOT2META has 2 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+ 
+ 
+10869  proc print data=WORK.Plot2META label noobs;
+10870  var ROLE LEVEL COUNT;
+10871  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+10872  title9 ' ';
+10873  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+10874  run;
+ 
+NOTE: There were 2 observations read from the data set WORK.PLOT2META.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10875  title10;
+ 
+10896  *------------------------------------------------------------* ;
+10897  * Plot2: DMDBClass Macro ;
+10898  *------------------------------------------------------------* ;
+10899  %macro DMDBClass;
+10900      Change__(ASC) DailyHighestPrice_StockOpenP(ASC) DailyLowest_StockOpen(ASC)
+10901     DailyStockOpen_PrevDayOpen(ASC) High(ASC) Low(ASC) Open(ASC) Outcome(DESC)
+10902     Price(ASC) TDailyStockOpen_PrevClose(ASC)
+10903  %mend DMDBClass;
+10904  *------------------------------------------------------------*;
+10905  * Plot2: Create DMDB;
+10906  *------------------------------------------------------------*;
+10907  proc dmdb batch data=EMWS1.FIMPORT3_train
+10908  dmdbcat=WORK.Plot2_DMDB
+10909  maxlevel = 23
+10910  nonorm
+10911  ;
+10912  class %DMDBClass;
+10913  target
+10914  Outcome
+10915  ;
+10916  run;
+ 
+NOTE: Records processed = 35   Memory used = 511K.
+NOTE: View EMWS1.FIMPORT3_TRAIN.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+NOTE: There were 35 observations read from the data set EMWS1.FIMPORT3_DATA.
+NOTE: There were 35 observations read from the data set EMWS1.FIMPORT3_TRAIN.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10917  quit;
+ 
+10918  *------------------------------------------------------------*;
+10919  * Plot2: Creating variable by class target charts;
+10920  *------------------------------------------------------------*;
+10921  goptions ftext="SWISS";
+10922  goptions nodisplay device=PNG;
+10923  axis1 width=2 offset=(1,1) label=(rotate=90 angle=270) minor=none;
+10924  axis2 width=2 minor=none;
+10925  pattern1 value=solid;
+10926  proc gchart
+10927  data=EMWS1.FIMPORT3_train gout=WORK.Plot2GRAPH;
+10928  *;
+10929  title "Change__ by Outcome";
+10930  vbar Change__ /
+10931  name = "Change__       x Outcome        " description = "Change__ by Outcome"
+10932  FREQ
+10933  type=FREQ
+10934  subgroup=Outcome
+10935  noframe
+10936  missing
+10937  raxis=axis1 maxis=axis2;
+10938  run;
+ 
+NOTE: Graph's name, CHANGE__, changed to CHANGE__. CHANGE__ is already used or not a valid SAS name.
+10939  title "DailyHighestPrice_StockOpenP by Outcome";
+10940  vbar DailyHighestPrice_StockOpenP /
+10941  name = "DailyHighestPrix Outcome        " description = "DailyHighestPrice_StockOpenP by Outcome"
+10942  FREQ
+10943  type=FREQ
+10944  subgroup=Outcome
+10945  noframe
+10946  missing
+10947  raxis=axis1 maxis=axis2;
+10948  run;
+ 
+NOTE: Graph's name, DAILYHIG, changed to DAILYHIG. DAILYHIG is already used or not a valid SAS name.
+10949  title "DailyLowest_StockOpen by Outcome";
+10950  vbar DailyLowest_StockOpen /
+10951  name = "DailyLowest_Stox Outcome        " description = "DailyLowest_StockOpen by Outcome"
+10952  FREQ
+10953  type=FREQ
+10954  subgroup=Outcome
+10955  noframe
+10956  missing
+10957  raxis=axis1 maxis=axis2;
+10958  run;
+ 
+NOTE: Graph's name, DAILYLOW, changed to DAILYLOW. DAILYLOW is already used or not a valid SAS name.
+10959  title "DailyStockOpen_PrevDayOpen by Outcome";
+10960  vbar DailyStockOpen_PrevDayOpen /
+10961  name = "DailyStockOpen_x Outcome        " description = "DailyStockOpen_PrevDayOpen by Outcome"
+10962  FREQ
+10963  type=FREQ
+10964  subgroup=Outcome
+10965  noframe
+10966  missing
+10967  raxis=axis1 maxis=axis2;
+10968  run;
+ 
+NOTE: Graph's name, DAILYSTO, changed to DAILYSTO. DAILYSTO is already used or not a valid SAS name.
+10969  title "High by Outcome";
+10970  vbar High /
+10971  name = "High           x Outcome        " description = "High by Outcome"
+10972  FREQ
+10973  type=FREQ
+10974  subgroup=Outcome
+10975  noframe
+10976  missing
+10977  raxis=axis1 maxis=axis2;
+10978  run;
+ 
+NOTE: Graph's name, HIGH, changed to HIGH. HIGH is already used or not a valid SAS name.
+10979  title "Low by Outcome";
+10980  vbar Low /
+10981  name = "Low            x Outcome        " description = "Low by Outcome"
+10982  FREQ
+10983  type=FREQ
+10984  subgroup=Outcome
+10985  noframe
+10986  missing
+10987  raxis=axis1 maxis=axis2;
+10988  run;
+ 
+NOTE: Graph's name, LOW, changed to LOW. LOW is already used or not a valid SAS name.
+10989  title "Open by Outcome";
+10990  vbar Open /
+10991  name = "Open           x Outcome        " description = "Open by Outcome"
+10992  FREQ
+10993  type=FREQ
+10994  subgroup=Outcome
+10995  noframe
+10996  missing
+10997  raxis=axis1 maxis=axis2;
+10998  run;
+ 
+NOTE: Graph's name, OPEN, changed to OPEN. OPEN is already used or not a valid SAS name.
+10999  title "Price by Outcome";
+11000  vbar Price /
+11001  name = "Price          x Outcome        " description = "Price by Outcome"
+11002  FREQ
+11003  type=FREQ
+11004  subgroup=Outcome
+11005  noframe
+11006  missing
+11007  raxis=axis1 maxis=axis2;
+11008  run;
+ 
+NOTE: Graph's name, PRICE, changed to PRICE. PRICE is already used or not a valid SAS name.
+11009  title "TDailyStockOpen_PrevClose by Outcome";
+11010  vbar TDailyStockOpen_PrevClose /
+11011  name = "TDailyStockOpenx Outcome        " description = "TDailyStockOpen_PrevClose by Outcome"
+11012  FREQ
+11013  type=FREQ
+11014  subgroup=Outcome
+11015  noframe
+11016  missing
+11017  raxis=axis1 maxis=axis2;
+11018  run;
+ 
+NOTE: Graph's name, TDAILYST, changed to TDAILYST. TDAILYST is already used or not a valid SAS name.
+11019  quit;
+ 
+NOTE: View EMWS1.FIMPORT3_TRAIN.VIEW used (Total process time):
+      real time           0.55 seconds
+      cpu time            0.43 seconds
+ 
+NOTE: There were 35 observations read from the data set EMWS1.FIMPORT3_DATA.
+NOTE: There were 35 observations read from the data set EMWS1.FIMPORT3_TRAIN.
+NOTE: PROCEDURE GCHART used (Total process time):
+      real time           0.56 seconds
+      cpu time            0.43 seconds
+ 
+ 
+11020  title;
+11021  goptions display;
+ 
+11022  *------------------------------------------------------------*;
+11023  * Plot2: Creating variable by interval target charts;
+11024  *------------------------------------------------------------*;
+11025  *------------------------------------------------------------* ;
+11026  * Plot2: DMDBClass Macro ;
+11027  *------------------------------------------------------------* ;
+11028  %macro DMDBClass;
+11029      Outcome(DESC)
+11030  %mend DMDBClass;
+11031  *------------------------------------------------------------* ;
+11032  * Plot2: DMDBVar Macro ;
+11033  *------------------------------------------------------------* ;
+11034  %macro DMDBVar;
+11035      Change__ DailyHighestPrice_StockOpenP DailyLowest_StockOpen
+11036     DailyStockOpen_PrevDayOpen High Low Open Price TDailyStockOpen_PrevClose
+11037  %mend DMDBVar;
+11038  *------------------------------------------------------------*;
+11039  * Plot2: Create DMDB;
+11040  *------------------------------------------------------------*;
+11041  proc dmdb batch data=EMWS1.FIMPORT3_train
+11042  dmdbcat=WORK.Plot2_DMDB
+11043  classout=work.classoutDs
+11044  varout=work.varoutDs
+11045  maxlevel = 513
+11046  ;
+11047  class %DMDBClass;
+11048  var %DMDBVar;
+11049  target
+11050  Outcome
+11051  ;
+11052  run;
+ 
+NOTE: Records processed = 35   Memory used = 511K.
+NOTE: View EMWS1.FIMPORT3_TRAIN.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+NOTE: There were 35 observations read from the data set EMWS1.FIMPORT3_DATA.
+NOTE: There were 35 observations read from the data set EMWS1.FIMPORT3_TRAIN.
+NOTE: The data set WORK.CLASSOUTDS has 2 observations and 9 variables.
+NOTE: The data set WORK.VAROUTDS has 9 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11053  quit;
+11054  *--- end code ---*;
+ 
+11055  title8;
+11056  title8 "%sysfunc(sasmsg(sashelp.dmine, rpt_classvars_title, NOQUOTE))";
+11057  proc print data=work.classoutDs;
+11058  run;
+ 
+NOTE: There were 2 observations read from the data set WORK.CLASSOUTDS.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11059  proc datasets lib=work nolist;
+11060  delete classoutDs;
+11061  run;
+ 
+NOTE: Deleting WORK.CLASSOUTDS (memtype=DATA).
+11062  title8;
+11063  title8;
+11064  title8 "%sysfunc(sasmsg(sashelp.dmine, rpt_intvars_title, NOQUOTE))";
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11065  proc print data=work.varoutDs;
+11066  run;
+ 
+NOTE: There were 9 observations read from the data set WORK.VAROUTDS.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11067  proc datasets lib=work nolist;
+11068  delete varoutDs;
+11069  run;
+ 
+NOTE: Deleting WORK.VAROUTDS (memtype=DATA).
+11070  title8;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11071  proc datasets lib=WORK nolist;
+11072  delete Plot2_DMDB;
+11073  run;
+ 
+NOTE: The file WORK.PLOT2_DMDB (memtype=DATA) was not found, but appears on a DELETE statement.
+11074  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11075  proc datasets lib=WORK nolist;
+11076  delete Plot2_DMDB / memtype=catalog;
+11077  run;
+ 
+NOTE: Deleting WORK.PLOT2_DMDB (memtype=CATALOG).
+11078  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11079  *------------------------------------------------------------*;
+11080  * Plot2: Copying graphs to node folder;
+11081  *------------------------------------------------------------*;
+11082  filename gsasfile "C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\Change__ by Outcome.png";
+11083  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11084  proc greplay igout=WORK.PLOT2GRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+ 
+NOTE: Enter greplay commands or statements.
+11085  replay CHANGE__;
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+NOTE: 6484 bytes written to C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\Change__ by Outcome.png.
+11086  quit;
+ 
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.07 seconds
+ 
+ 
+11087  goptions device=win;
+11088  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+ 
+11089  filename gsasfile "C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\DailyHighestPrice_StockOpenP by Outcome.png";
+11090  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11091  proc greplay igout=WORK.PLOT2GRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+ 
+NOTE: Enter greplay commands or statements.
+11092  replay DAILYHIG;
+NOTE: 7369 bytes written to C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\DailyHighestPrice_StockOpenP by Outcome.png.
+11093  quit;
+ 
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+ 
+11094  goptions device=win;
+11095  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+ 
+11096  filename gsasfile "C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\DailyLowest_StockOpen by Outcome.png";
+11097  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11098  proc greplay igout=WORK.PLOT2GRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+ 
+NOTE: Enter greplay commands or statements.
+11099  replay DAILYLOW;
+NOTE: 7296 bytes written to C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\DailyLowest_StockOpen by Outcome.png.
+11100  quit;
+ 
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+ 
+11101  goptions device=win;
+11102  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+ 
+11103  filename gsasfile "C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\DailyStockOpen_PrevDayOpen by Outcome.png";
+11104  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11105  proc greplay igout=WORK.PLOT2GRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+ 
+NOTE: Enter greplay commands or statements.
+11106  replay DAILYSTO;
+NOTE: 7248 bytes written to C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\DailyStockOpen_PrevDayOpen by Outcome.png.
+11107  quit;
+ 
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+ 
+ 
+11108  goptions device=win;
+11109  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+ 
+11110  filename gsasfile "C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\High by Outcome.png";
+11111  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11112  proc greplay igout=WORK.PLOT2GRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+ 
+NOTE: Enter greplay commands or statements.
+11113  replay HIGH;
+NOTE: 6391 bytes written to C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\High by Outcome.png.
+11114  quit;
+ 
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.04 seconds
+ 
+ 
+11115  goptions device=win;
+11116  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+ 
+11117  filename gsasfile "C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\Low by Outcome.png";
+11118  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11119  proc greplay igout=WORK.PLOT2GRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+ 
+NOTE: Enter greplay commands or statements.
+11120  replay LOW;
+NOTE: 6233 bytes written to C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\Low by Outcome.png.
+11121  quit;
+ 
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+ 
+ 
+11122  goptions device=win;
+11123  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+ 
+11124  filename gsasfile "C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\Open by Outcome.png";
+11125  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11126  proc greplay igout=WORK.PLOT2GRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+ 
+NOTE: Enter greplay commands or statements.
+11127  replay OPEN;
+NOTE: 6423 bytes written to C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\Open by Outcome.png.
+11128  quit;
+ 
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+ 
+ 
+11129  goptions device=win;
+11130  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+ 
+11131  filename gsasfile "C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\Price by Outcome.png";
+11132  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11133  proc greplay igout=WORK.PLOT2GRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+ 
+NOTE: Enter greplay commands or statements.
+11134  replay PRICE;
+NOTE: 6319 bytes written to C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\Price by Outcome.png.
+11135  quit;
+ 
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+ 
+ 
+11136  goptions device=win;
+11137  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+ 
+11138  filename gsasfile "C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\TDailyStockOpen_PrevClose by Outcome.png";
+11139  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11140  proc greplay igout=WORK.PLOT2GRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+ 
+NOTE: Enter greplay commands or statements.
+11141  replay TDAILYST;
+NOTE: 7163 bytes written to C:\Users\Forge 15 i7\Documents\DataMining\DM\Workspaces\EMWS1\Plot2\GRAPH\TDailyStockOpen_PrevClose by Outcome.png.
+11142  quit;
+ 
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+ 
+11143  goptions device=win;
+11144  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+ 
+*------------------------------------------------------------*
+* Score Log
+Date:                December 18, 2019
+Time:                23:13:36
+*------------------------------------------------------------*
+11246  *------------------------------------------------------------*;
+11247  * Plot2: Scoring DATA data;
+11248  *------------------------------------------------------------*;
+11249  data EMWS1.Plot2_TRAIN
+11250  / view=EMWS1.Plot2_TRAIN
+11251  ;
+11252  set EMWS1.FIMPORT3_train
+11253  ;
+11254  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.PLOT2_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.FIMPORT3_TRAIN.VIEW used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11255  quit;
+ 
+11256  *------------------------------------------------------------*;
+11257  * Plot2: Computing metadata for TRAIN data;
+11258  *------------------------------------------------------------*;
+ 
+NOTE: View EMWS1.PLOT2_TRAIN.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.04 seconds
+ 
+NOTE: View EMWS1.PLOT2_TRAIN.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+*------------------------------------------------------------*
+* Report Log
+Date:                December 18, 2019
+Time:                23:13:37
+*------------------------------------------------------------*

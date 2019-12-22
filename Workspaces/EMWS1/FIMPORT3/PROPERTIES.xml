@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  Location="CATALOG" Catalog="SASHELP.EMSAMP.FIMPORT.SOURCE" ImportType="Local" GuessRows="500"
+ Delimiter="," NameRow="Y" SkipRows="0" MaxRows="1000000" MaxCols="10000" FileType="xlsx"
+ Role="TRAIN" ForceRun="N" Summarize="N" AdvancedAdvisor="N" RunAction="Train" Component="FileImport"
+ IFileName="C:\Users\Forge 15 i7\Desktop\UM 2nd Semester\WQD 7005 -Data Mining\Project\Data\USD_Dirty_Value.xlsx"
+ AccessTable="NoTableName" UserID="NoUserID" Password="NoPassword" RawCreateTime="1892214425.7"
+ CreateTime="17DEC2019:15:07:06" RunId="cb5ed2d1-3b7b-42c4-a2de-a08abf7af0cf">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+USERTRAINCODE
+USERSCORECODE
+USERREPORTCODE
+VARIABLESETDELTA
+DELTACODE
+EMNOTES
+]]>
+</FILEPROPERTIES><EMTARGETATTRIBUTES/>
+</_ROOT_>

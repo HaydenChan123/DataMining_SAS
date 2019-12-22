@@ -1,0 +1,50 @@
+*------------------------------------------------------------*
+User:                Forge 15 i7
+Date:                December 19, 2019
+Time:                16:27:22
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          9
+TARGET     BINARY            1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Imputation Summary
+Number Of Observations
+ 
+                                                                                Number of
+Variable    Impute     Imputed      Impute             Measurement                Missing
+  Name      Method    Variable      Value     Role        Level       Label     for TRAIN
+ 
+ Price       MEAN     IMP_Price    71.2404    INPUT     INTERVAL      Price             1
+ 
+ 
+ 
+ 
+Variable Distribution Training Data
+ 
+        Number of
+          Missing    Number of    Percent of
+Obs     for TRAIN    Variables     Variables
+ 
+ 1              1        1            100

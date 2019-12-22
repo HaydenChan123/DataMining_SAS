@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  Location="CATALOG" Catalog="SASHELP.EMMODL.TREE.SOURCE" ToolType="MODEL" TrainMode="BATCH"
+ ImportModel="N" Freeze="N" UseMultipleTarget="N" Precision="4" IntervalCriterion="PROBF"
+ NominalCriterion="PROBCHISQ" OrdinalCriterion="ENTROPY" SigLevel="0.05" Splitsize="."
+ LeafSize="5" MinCatSize="5" Maxbranch="3" Maxdepth="6" Nrules="5" Nsurrs="0" MissingValue="SMALLRESIDUAL"
+ UseVarOnce="N" SplitPrecision="4" Subtree="LARGEST" NSubtree="1" AssessMeasure="PROFIT/LOSS"
+ AssessPercentage="0.25" NodeSample="20000" Exhaustive="5000" Kass="Y" KassApply="BEFORE"
+ Depth="Y" Inputs="N" NumInputs="1" VarSelection="Y" Leafid="Y" NodeRole="SEGMENT"
+ Performance="DISK" CV="Y" CVNIter="3" CVRepeat="1" CVSeed="22222" ObsImportance="N"
+ NumSingleImp="5" UseDecision="N" UsePriors="N" ClassColorBy="PERCENTCORRECT" IntColorBy="AVG"
+ ShowNodeId="Y" ShowValid="Y" Pred="N" Target="ALL" Count="Y" ProfitLoss="NONE" PercentCorrect="N"
+ AVG="Y" RASE="N" CreateSample="DEFAULT" SampleMethod="RANDOM" SampleSize="10000"
+ SampleSeed="12345" ForceRun="N" RunAction="Train" Component="DecisionTree" Criterion="DEFAULT"
+ Dummy="N" Predict="Y" ImportedTreeData="" RawCreateTime="1892222322.4" CreateTime="17DEC2019:17:18:42"
+ RunId="0d1ca4a6-08f2-42dc-b594-7ab6c7962b6e" RawLastTimeRun="1892400087.2" RawRunTime="215.16999984"
+ LastTimeRun="19DEC2019:18:41:27" RunTime="0 Hr. 3 Min. 35.17 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+USERTRAINCODE
+USERSCORECODE
+USERREPORTCODE
+]]>
+</FILEPROPERTIES></_ROOT_>

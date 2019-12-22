@@ -1,0 +1,20 @@
+*------------------------------------------------------------*
+ Node = 11
+*------------------------------------------------------------*
+if DailyStockOpen_PrevDayOpen < 1.00048 or MISSING
+then 
+ Tree Node Identifier   = 11
+ Number of Observations = 7
+ Predicted: Outcome=1 = 1.00
+ Predicted: Outcome=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 12
+*------------------------------------------------------------*
+if DailyStockOpen_PrevDayOpen >= 1.00048
+then 
+ Tree Node Identifier   = 12
+ Number of Observations = 6
+ Predicted: Outcome=1 = 0.00
+ Predicted: Outcome=0 = 1.00
+ 

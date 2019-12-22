@@ -1,0 +1,36 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+INPUT      INTERVAL          9    
+TARGET     BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+Class Variables
+
+Obs     NAME      LEVEL      CODE     FREQUENCY    TYPE    CRAW    NRAW    FREQPERCENT    NMISSPERCENT
+
+ 1     Outcome      1           0            19     N                1       54.2857         54.2857  
+ 2     Outcome      0           1            16     N                0       45.7143         45.7143  
+ 
+                                                                                                                                                                                                                                                                
+ 
+Interval Variables
+
+Obs    NAME                                NMISS            N         MIN      MAX        MEAN       STD      SKEWNESS    KURTOSIS
+
+ 1     Change__                                0           35     -0.0044     0.0050     0.0001    0.00271     0.09481    -1.12487
+ 2     DailyHighestPrice_StockOpenP            0           35      1.0000     1.0059     1.0023    0.00158     0.49123    -0.57050
+ 3     DailyLowest_StockOpen                   0           35      0.9951     1.0000     0.9982    0.00139    -0.68629    -0.29072
+ 4     DailyStockOpen_PrevDayOpen              1           34      0.9949     1.0060     1.0000    0.00299     0.08396    -1.08984
+ 5     High                                    0           35     70.8020    72.2520    71.4774    0.43903    -0.09819    -1.46764
+ 6     Low                                     0           35     70.5030    71.8570    71.1864    0.42226    -0.17381    -1.51271
+ 7     Open                                    0           35     70.5520    72.0820    71.3161    0.45767    -0.21155    -1.39532
+ 8     Price                                   3           32     70.5700    72.1500    71.3000    0.44893     0.12696    -1.33167
+ 9     TDailyStockOpen_PrevClose               1           34      0.9921     1.0077     0.9998    0.00403     0.09235    -0.68536

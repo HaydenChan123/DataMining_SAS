@@ -1,0 +1,139 @@
+ 
+                                                                                               
+ 
+ 
+Fit Statistics
+
+Target=Outcome Target Label=Outcome
+
+   Fit
+Statistics    Statistics Label                   Train     Validation      Test
+
+ _AIC_        Akaike's Information Criterion    12.0171        .           .    
+ _ASE_        Average Squared Error              0.0000       0.0266      0.0695
+ _AVERR_      Average Error Function             0.0007       0.0775      0.3059
+ _DFE_        Degrees of Freedom for Error       7.0000        .           .    
+ _DFM_        Model Degrees of Freedom           6.0000        .           .    
+ _DFT_        Total Degrees of Freedom          13.0000        .           .    
+ _DIV_        Divisor for ASE                   26.0000      16.0000     28.0000
+ _ERR_        Error Function                     0.0171       1.2405      8.5641
+ _FPE_        Final Prediction Error             0.0000        .           .    
+ _MAX_        Maximum Absolute Error             0.0031       0.4615      0.9862
+ _MSE_        Mean Square Error                  0.0000       0.0266      0.0695
+ _NOBS_       Sum of Frequencies                13.0000       8.0000     14.0000
+ _NW_         Number of Estimate Weights         6.0000        .           .    
+ _RASE_       Root Average Sum of Squares        0.0012       0.1632      0.2636
+ _RFPE_       Root Final Prediction Error        0.0020        .           .    
+ _RMSE_       Root Mean Squared Error            0.0017       0.1632      0.2636
+ _SBC_        Schwarz's Bayesian Criterion      15.4068        .           .    
+ _SSE_        Sum of Squared Errors              0.0000       0.4260      1.9451
+ _SUMW_       Sum of Case Weights Times Freq    26.0000      16.0000     28.0000
+ _MISC_       Misclassification Rate             0.0000       0.0000      0.0714
+ 
+                                                                                               
+ 
+ 
+Classification Table
+
+Data Role=TRAIN Target Variable=Outcome Target Label=Outcome
+
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+
+  0          0           100           100           6          46.1538 
+  1          1           100           100           7          53.8462 
+
+
+Data Role=VALIDATE Target Variable=Outcome Target Label=Outcome
+
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+
+  0          0           100           100           4            50    
+  1          1           100           100           4            50    
+ 
+                                                                                               
+ 
+ 
+Event Classification Table
+
+Data Role=TRAIN Target=Outcome Target Label=Outcome
+
+  False       True        False       True
+Negative    Negative    Positive    Positive
+
+    0           6           0           7   
+
+
+Data Role=VALIDATE Target=Outcome Target Label=Outcome
+
+  False       True        False       True
+Negative    Negative    Positive    Positive
+
+    0           4           0           4   
+ 
+                                                                                               
+ 
+ 
+Assessment Score Rankings
+
+Data Role=TRAIN Target Variable=Outcome Target Label=Outcome
+
+                                                                                    Mean
+                            Cumulative       %      Cumulative     Number of     Posterior
+Depth     Gain      Lift       Lift      Response   % Response   Observations   Probability
+
+   5    85.7143   1.85714     1.85714       100       100.000          1          1.00000  
+  10    85.7143   1.85714     1.85714       100       100.000          1          1.00000  
+  20    85.7143   1.85714     1.85714       100       100.000          1          1.00000  
+  25    85.7143   1.85714     1.85714       100       100.000          1          1.00000  
+  35    85.7143   1.85714     1.85714       100       100.000          1          0.99970  
+  40    85.7143   1.85714     1.85714       100       100.000          1          0.99890  
+  50    85.7143   1.85714     1.85714       100       100.000          1          0.99691  
+  55    62.5000   0.00000     1.62500         0        87.500          1          0.00283  
+  65    44.4444   0.00000     1.44444         0        77.778          1          0.00102  
+  70    30.0000   0.00000     1.30000         0        70.000          1          0.00023  
+  80    18.1818   0.00000     1.18182         0        63.636          1          0.00000  
+  85     8.3333   0.00000     1.08333         0        58.333          1          0.00000  
+  95     0.0000   0.00000     1.00000         0        53.846          1          0.00000  
+
+
+Data Role=VALIDATE Target Variable=Outcome Target Label=Outcome
+
+                                                                                        Mean
+                            Cumulative        %       Cumulative      Number of      Posterior
+Depth       Gain    Lift       Lift       Response    % Response    Observations    Probability
+
+   5     100.000      2       2.00000        100        100.000           1           1.00000  
+  15     100.000      2       2.00000        100        100.000           1           1.00000  
+  30     100.000      2       2.00000        100        100.000           1           0.99938  
+  40     100.000      2       2.00000        100        100.000           1           0.53846  
+  55      60.000      0       1.60000          0         80.000           1           0.00059  
+  65      33.333      0       1.33333          0         66.667           1           0.00000  
+  80      14.286      0       1.14286          0         57.143           1           0.00000  
+  90       0.000      0       1.00000          0         50.000           1           0.00000  
+ 
+                                                                                               
+ 
+ 
+Assessment Score Distribution
+
+Data Role=TRAIN Target Variable=Outcome Target Label=Outcome
+
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+
+ 0.95-1.00        7          0          0.99936        53.8462 
+ 0.00-0.05        0          6          0.00068        46.1538 
+
+
+Data Role=VALIDATE Target Variable=Outcome Target Label=Outcome
+
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+
+ 0.95-1.00        3          0          0.99979         37.5   
+ 0.50-0.55        1          0          0.53846         12.5   
+ 0.00-0.05        0          4          0.00015         50.0   

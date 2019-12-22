@@ -1,0 +1,10 @@
+Change__= "Change %"n;
+drop "Change %"n;
+DailyStockOpen_PrevDayOpen= "DailyStockOpen/PrevDayOpen"n;
+drop "DailyStockOpen/PrevDayOpen"n;
+DailyHighestPrice_StockOpenPrice= "DailyHighestPrice/StockOpenPrice"n;
+drop "DailyHighestPrice/StockOpenPrice"n;
+DailyLowestPrice_StockOpenPrice= "DailyLowestPrice/StockOpenPrice"n;
+drop "DailyLowestPrice/StockOpenPrice"n;
+DailyStockOpen_PrevClosePrice= "DailyStockOpen/PrevClosePrice"n;
+drop "DailyStockOpen/PrevClosePrice"n;

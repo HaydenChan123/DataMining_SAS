@@ -1,0 +1,82 @@
+*------------------------------------------------------------*
+User:                Forge 15 i7
+Date:                December 19, 2019
+Time:                16:27:12
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          9
+TARGET     BINARY            1
+TIMEID     INTERVAL          1
+ 
+ 
+ 
+ 
+Partition Summary
+ 
+                                      Number of
+Type              Data Set          Observations
+ 
+DATA        EMWS1.FIMPORT3_train         35
+TRAIN       EMWS1.Part2_TRAIN            13
+VALIDATE    EMWS1.Part2_VALIDATE          8
+TEST        EMWS1.Part2_TEST             14
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Summary Statistics for Class Targets
+ 
+Data=DATA
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent     Label
+ 
+Outcome        0           0            16       45.7143    Outcome
+Outcome        1           1            19       54.2857    Outcome
+ 
+ 
+Data=TEST
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent     Label
+ 
+Outcome        0           0            6        42.8571    Outcome
+Outcome        1           1            8        57.1429    Outcome
+ 
+ 
+Data=TRAIN
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent     Label
+ 
+Outcome        0           0            6        46.1538    Outcome
+Outcome        1           1            7        53.8462    Outcome
+ 
+ 
+Data=VALIDATE
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent     Label
+ 
+Outcome        0           0            4           50      Outcome
+Outcome        1           1            4           50      Outcome
